@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Calcolatrice</title>
+      <style type="text/css">
+         input {
+         background-color:lightcoral;
+         border-color:indianred;
+         color:black;
+         width:100px;
+         }
+         body {
+         background-color:whitesmoke;
+         }
+         #risultato
+         {
+         width:410px;
+         background-color:lightcoral;
+         color:black;
+         }
+         .large
+         {
+         width:105px;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="background-color:lightgrey;">
+         <tr>
+            <td><input type="text" value="0" id="risultato" readonly="readonly"></td>
+         </tr>
+         <tr>
+            <td>
+               <input type="submit" value="Cancella" class="cancella">
+               <input type="submit" value="Azzera" class="azzera">
+            </td>
+         </tr>
+         <tr>
+            <td>                                                
+               <input type="submit" value="×" id="*" class="btn" >
+               <input type="submit" value="÷" id="/" class="btn" >
+               <input type="submit" value="+" id="+" class="btn" >
+               <input type="submit" value="-" id="-" class="btn" >
+            </td>
+         </tr>
+         <tr>
+            <td><input type="submit" value="0" id="0" class="btn" >
+               <input type="submit" value="1" id="1" class="btn" >
+               <input type="submit" value="2" id="2" class="btn" >
+               <input type="submit" value="3" id="3" class="btn" >
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <input type="submit" value="4" id="4" class="btn" >
+               <input type="submit" value="5" id="5" class="btn" >
+               <input type="submit" value="6" id="6" class="btn" >
+               <input type="submit" value="7" id="7" class="btn" >
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <input type="submit" value="8" id="8" class="btn" >
+               <input type="submit" value="9" id="9" class="btn" >
+               <input type="submit" value="(" id="(" class="btn" >
+               <input type="submit" value=")" id=")" class="btn" >
+         <tr>
+            <td>
+               <input type="submit" value="0" id="0" class="btn" >
+               <input type="submit" value="=" class="result">
+            </td>
+         </tr>
+      </table>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+         crossorigin="anonymous"></script>
+      
+      <script type="text/javascript">
+         $( document ).ready(function() {
+           var $risultato = $("#risultato")
+         
+           $(".btn").click(function (){
+             
+              var op = this.id;
+               
+               if($risultato.val()=="0"|| !$risultato.val()) { //condizione iniziale
+                 $risultato.val(op);
+              } else{
+                 $risultato.val($risultato.val() + op)
+              }
+           })
+         
+           $(".result").click(function(){
+               var currentVal = $risultato.val();
+               var evaluedVal = eval(currentVal);
+               $risultato.val(evaluedVal);
+           })
+          
+           $( ".cancella").click(function(){
+               var currentVal = $risultato.val();
+               var modifiedVal = currentVal.substring(0, currentVal.length-1);
+              $risultato.val(modifiedVal);     
+           })
+         
+           $( ".azzera").click(function(){
+              $risultato.val("0");
+           })
+          
+         });
+         
+      </script>
+   </body>
+</html>

@@ -1,0 +1,64 @@
+ <!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Calcolatrice</title>
+</head>
+    
+<body>
+
+<div id="calcolatrice" style="border:1px solid grey;display:inline-block;background-color:#eee;">
+<input type="text" id="input_calcolo"  background-color  style="outline:none;"/><br>
+<input type="button" value="1" onclick="scrivi('1')"/>
+<input type="button" value="2" onclick="scrivi('2')"/>
+<input type="button" value="3" onclick="scrivi('3')"/>
+<input type="button" value="+" onclick="scrivi('+')" style="width:30px;margin-left:32px;"/><br>
+<input type="button" value="4" onclick="scrivi('4')"/>
+<input type="button" value="5" onclick="scrivi('5')"/>
+<input type="button" value="6" onclick="scrivi('6')"/>
+<input type="button" value="-" onclick="scrivi('-')" style="width:30px;margin-left:32px;"/><br>
+<input type="button" value="7" onclick="scrivi('7')"/>
+<input type="button" value="8" onclick="scrivi('8')"/>
+<input type="button" value="9" onclick="scrivi('9')"/>
+<input type="button" value="*" onclick="scrivi('*')" style="width:30px;margin-left:32px;"/><br>
+<input type="button" value="0" onclick="scrivi('0')">
+<input type="button" value="C" onclick="resetta()">
+<input type="button" value="AC" onclick="cancella()">
+<input type="button" value="." onclick="scrivi('.')">
+<input type="button" value="÷" onclick="scrivi('/')" style="width:30px;margin-left:33px;"/><br>
+<center><input type="button" value="=" onclick="calcola()" style="width:98%;" /></center>
+</div>
+       
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    
+var calc = document.getElementById("input_calcolo"); 
+    
+function scrivi(valore) {
+if(calc.value==null || calc.value=="0")
+  calc.value = valore
+else
+  calc.value += valore
+ return true;   
+}
+
+function calcola() {
+calc.value = eval(calc.value);
+}
+
+function resetta() {
+calc.value ="";
+}
+    
+function cancella()
+{
+ if(calc.value.length!=0)
+  calc.value = calc.value.substring(0,calc.value.length-1)
+ else
+  calc.value = "0";
+ return true;
+}
+    
+</script>
+</body>
+</html>
